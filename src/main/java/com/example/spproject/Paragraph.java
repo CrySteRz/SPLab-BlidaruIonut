@@ -1,5 +1,8 @@
 package com.example.spproject;
 
+
+import com.example.spproject.Element;
+
 public class Paragraph implements Element {
     public String text;
 

@@ -1,6 +1,8 @@
 package com.example.spproject;
 
-public class TableOfContents implements Element{
+import com.example.spproject.Element;
+
+public class TableOfContents implements Element {
     @Override
     public void print() {
     }
@@ -20,3 +22,4 @@ public class TableOfContents implements Element{
 
     }
 }
+
