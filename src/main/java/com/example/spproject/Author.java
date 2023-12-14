@@ -1,7 +1,11 @@
 package com.example.spproject;
 
-public class Author {
+import javax.swing.plaf.PanelUI;
+import lombok.Getter;
 
+public class Author implements Visitee {
+
+    @Getter
     private String name;
     private String surname;
 
@@ -19,9 +23,15 @@ public class Author {
         this.surname = author.surname;
     }
 
-
-
-   public void print(){
-       System.out.println("Author: " + name);
-   }
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitAuthor(this);
+    }
+    public void print(){
+        System.out.println("Author: " + name);
+    }
 }
+
+
+
+

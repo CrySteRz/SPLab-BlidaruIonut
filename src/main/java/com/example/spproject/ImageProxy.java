@@ -1,6 +1,6 @@
 package com.example.spproject;
 
-public class ImageProxy extends Element  implements Picture{
+public class ImageProxy extends Element implements Picture, Visitee {
     private Image realImage;
     private String url;
 
@@ -14,18 +14,20 @@ public class ImageProxy extends Element  implements Picture{
     }
 
     public Image LoadImage(){
-       if(realImage == null)
-           realImage = new Image(url);
-    return realImage;
+        if(realImage == null)
+            realImage = new Image(url);
+        return realImage;
     }
 
-    @Override
-    public void print() {
-        LoadImage().print();
-    }
+
 
     @Override
     public Element clone() {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
     }
 }

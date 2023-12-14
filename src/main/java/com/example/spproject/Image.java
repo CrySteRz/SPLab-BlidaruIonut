@@ -1,27 +1,35 @@
 package com.example.spproject;
 
-
 import java.util.concurrent.TimeUnit;
 
-public class Image extends Element implements Picture {
-    private String url;
-    private String imageContent;
+import lombok.Getter;
 
-    public Image(String url) {
-        this.url = url;
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+public class Image extends Element implements Visitee {
+    @Getter
+    private String imageName;
 
+    public Image(String imageName) {
+        this.imageName = imageName;
     }
     public Image(Image other){
-        url = other.url;
+        imageName = other.imageName;
     }
 
-    public void print(){
-        System.out.println("Image with name: " + url);
+
+
+    @Override
+    public void add(Element e) {
+        throw new IllegalStateException("Cannot add an element");
+    }
+
+    @Override
+    public void remove(Element e) {
+        throw new IllegalStateException("Cannot remove an element");
+    }
+
+    @Override
+    public Element get(int index) {
+        throw new IllegalStateException("Cannot get an element");
     }
 
     @Override
@@ -30,7 +38,7 @@ public class Image extends Element implements Picture {
     }
 
     @Override
-    public String getUrl() {
-        return url;
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
     }
 }
