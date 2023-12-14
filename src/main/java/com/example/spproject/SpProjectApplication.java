@@ -3,35 +3,30 @@ package com.example.spproject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.security.PrivilegedAction;
-
 @SpringBootApplication
 public class SpProjectApplication {
 
     public static void main(String[] args) {
-        long startTimer = System.currentTimeMillis();
-        ImageProxy imgOne = new ImageProxy("Jeff Bezos");
-        ImageProxy imgTwo = new ImageProxy("Elon Musk");
-        ImageProxy imgThree = new ImageProxy("Warren Buffet");
-        Section sectionOne = new Section("Front Cover");
-        sectionOne.add(imgOne);
-        Section sectionTwo = new Section("Milionares");
-        sectionTwo.add(imgTwo);
-        sectionTwo.add(imgThree);
-        Book magazine = new Book("Forbes");
-        magazine.add(sectionOne);
-        magazine.add(sectionTwo);
-        long endTimer = System.currentTimeMillis();
-        System.out.println("Content creation took " + (endTimer - startTimer) + " milliseconds");
-        startTimer = System.currentTimeMillis();
-        sectionOne.print();
-        endTimer = System.currentTimeMillis();
-        System.out.println("Printing section 1 took " + (endTimer - startTimer) + " milliseconds");
-        startTimer = System.currentTimeMillis();
-        sectionOne.print();
-        endTimer = System.currentTimeMillis();
-        System.out.println("Printing section 1 again took " + (endTimer - startTimer) + " milliseconds");
 
+        Section cap1 = new Section("Capitolul 1");
+        Paragraph p1 = new Paragraph("Paragraph 1");
+        cap1.add(p1);
+        Paragraph p2 = new Paragraph("Paragraph 2");
+        cap1.add(p2);
+        Paragraph p3 = new Paragraph("Paragraph 3");
+        cap1.add(p3);
+        Paragraph p4 = new Paragraph("Paragraph 4");
+        cap1.add(p4);
+        System.out.println("Printing without Alignment");
+        System.out.println();
+        cap1.print();
+        p1.setAlignStrategy(new AlignCenter());
+        p2.setAlignStrategy(new AlignRight());
+        p3.setAlignStrategy(new AlignLeft());
+
+        System.out.println();
+        System.out.println("Printing with Alignment");
+        System.out.println();
+        cap1.print();
     }
-
 }
