@@ -1,20 +1,23 @@
 package com.example.spproject.services;
 import com.example.spproject.Book;
-public class CommandAddBook implements Command<Book> {
-    private BookServices books;
+import lombok.RequiredArgsConstructor;
 
-    private Book newBook;
+
+import java.util.Map;
+
+@RequiredArgsConstructor
+public class CommandAddBook implements Command {
+
+    Book result;
+
+    private final Map<String, Object> request;
 
     @Override
-    public Book execute() {
-        return books.createBook(newBook);
+    public void execute(CommandContext context) {
+        result = context.getBookRepository().createBook(new Book((String) request.get("Titlu")));
     }
 
-    public CommandAddBook(BookServices contextbooks){
-        this.books = contextbooks;
-    }
-
-    public void setAtribute(Book newBook){
-        this.newBook = newBook;
+    public Book getResults() {
+        return result;
     }
 }
