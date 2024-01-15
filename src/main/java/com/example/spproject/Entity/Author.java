@@ -1,21 +1,19 @@
-package com.example.spproject.entity;
+package com.example.spproject.Entity;
+
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @NoArgsConstructor(force = true)
 
-public class Book {
+public class Author {
     @Id
     @GeneratedValue
     Long id;
-    @ManyToMany
-    private List<Author> authors;
-
-
+    @Column
+    String name;
 }

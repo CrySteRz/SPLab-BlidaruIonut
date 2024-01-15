@@ -1,4 +1,4 @@
-package com.example.spproject.entity;
+package com.example.spproject.Entity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
